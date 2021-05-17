@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Challenge1_CafeRepository.Ingredients;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ namespace Challenge1_CafeRepository
     public class MenuRepository
     {
         public List<MenuItem> _menuItem = new List<MenuItem>();
+        public List<Ingredient> _ingredients = new List<Ingredient>();
 
         public bool AddToOrder(MenuItem newItem)
         {
@@ -34,8 +36,7 @@ namespace Challenge1_CafeRepository
             }
             return null;
         }
-
-        public MenuItem ComboNumber(ComboMeal numberMeal)
+        public MenuItem GetOrderByComboNumber(ComboMeal numberMeal)
         {
             foreach (MenuItem meal in _menuItem)
             {
@@ -45,6 +46,11 @@ namespace Challenge1_CafeRepository
                 }
             }
             return null;
+        }
+
+        public List<Ingredient> GetAllIngredients()
+        {
+            return _ingredients;
         }
         public bool UpdateMenuItem(string mealName, MenuItem updatedMeal)
         {

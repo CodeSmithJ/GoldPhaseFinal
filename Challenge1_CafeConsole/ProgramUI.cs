@@ -23,7 +23,7 @@ namespace Challenge1_CafeConsole
                 Console.WriteLine("Select a menu option:\n" +
                     "1. Create New Meal\n" +
                     "2. View All Meals\n" +
-                    "3. View All Ingredients\n" +
+                    "3. View All Combos\n" +
                     "4. Update Meal\n" +
                     "5. Remove Meal\n" +
                     "6. Exit");
@@ -43,7 +43,7 @@ namespace Challenge1_CafeConsole
                     case "3":
                     case "three":
                         //View Content By Title
-                        DisplayIngredients();
+                        DisplayCombos();
                         break;
                     case "4":
                     case "four":
@@ -104,14 +104,25 @@ namespace Challenge1_CafeConsole
             foreach (MenuItem menuItem in allItems)
             {
                 Console.WriteLine($"Combo: {menuItem.NumberMeal}\n" +
-                    $"Combo: {menuItem.MealName}\n" +
+                    $"Name: {menuItem.MealName}\n" +
+                    $"Description: {menuItem.Description}\n" +
                     $"Price: {menuItem.Price}");
             }
         }
-        private void DisplayIngredients()
-        {
+        private void DisplayCombos()
 
+        {
+            Console.Clear();
+            List<MenuItem> allItems = _menuRepo.AllItems();
+            foreach (MenuItem menuItem in allItems)
+            {
+                Console.WriteLine($"Combo: {menuItem.NumberMeal}\n" +
+                    $"Name: {menuItem.MealName}\n" +
+                    $"Name: {menuItem.Description}\n" +
+                    $"Price: {menuItem.Price}");
+            }
         }
+
 
         private void UpdateMenuItem()
         {
@@ -172,7 +183,15 @@ namespace Challenge1_CafeConsole
         private void SaveOrderList()
         {
             MenuItem nugs = new MenuItem(ComboMeal.ChickenNuggets, "Chicken Nuggets", "8 Chicken Nuggets", 6.50);
+            MenuItem chezburg = new MenuItem(ComboMeal.CheeseBurger, "Cheese Burger", "Hamburger with Cheese", 6.70);
+            MenuItem fishsand = new MenuItem(ComboMeal.FishSandwich, "Fish Sandwich", "Standard Fish Sandwich", 7.50);
+            MenuItem chicksand = new MenuItem(ComboMeal.ChickenSandwich, "Chicken Sandwich", "Standard Chicken Sandwich", 5.30);
+            MenuItem hamburg = new MenuItem(ComboMeal.HamBurger, "Ham Burger", "Standard Hamburger", 5.50);
             _menuRepo.AddToOrder(nugs);
+            _menuRepo.AddToOrder(chezburg);
+            _menuRepo.AddToOrder(fishsand);
+            _menuRepo.AddToOrder(chicksand);
+            _menuRepo.AddToOrder(hamburg);
         }
     }
 }
