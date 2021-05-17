@@ -1,18 +1,18 @@
-﻿using Challenge2_ClaimsRepository;
+﻿using Challenge3_BadgesRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Challenge2_ClaimsConsole
+namespace Challenge3_BadgesConsole
 {
     class ProgramUI
     {
-        private ClaimRepository _claimRepo = new ClaimRepository();
+        private BadgesRepository _badgesRepo = new BadgesRepository();
         public void Run()
         {
-            SaveClaims();
+            SaveBadges();
             Menu();
         }
         private void Menu()
@@ -21,26 +21,26 @@ namespace Challenge2_ClaimsConsole
             while (keepRunning)
             {
                 Console.WriteLine("Choose a menu Option:\n" +
-                     "1. See All Claims\n" +
-                     "2. Take care of next claim\n" +
-                     "3. Enter a new claim\n" +
+                     "1. Add a badge\n" +
+                     "2. Edit a badge\n" +
+                     "3. List all badges\n" +
                      "4. Exit");
                 string input = Console.ReadLine();
                 switch (input.ToLower())
                 {
                     case "1":
                     case "one":
-                        //SeeAllClaims
+                        //Add a badge
                         ();
                         break;
                     case "2":
                     case "two":
-                        //TakeCareOfNextClaim
+                        //edit a badge
                         ();
                         break;
                     case "3":
                     case "three":
-                        //EnterNewClaim
+                        //List all badges
                         ();
                         break;
                     case "4":

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2261902E-6513-4B99-B709-AB6B256AE3D4}</ProjectGuid>
+    <ProjectGuid>{884A5706-CBB6-45BA-A732-03226281C2EB}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Challenge2_ClaimsConsole</RootNamespace>
-    <AssemblyName>Challenge2_ClaimsConsole</AssemblyName>
+    <RootNamespace>Challenge3_BadgesConsole</RootNamespace>
+    <AssemblyName>Challenge3_BadgesConsole</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -51,9 +51,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Challenge2_ClaimsRepository\Challenge2_ClaimsRepository.csproj">
-      <Project>{EA8D3666-11A4-487B-9EE7-250ABDFFE526}</Project>
-      <Name>Challenge2_ClaimsRepository</Name>
+    <ProjectReference Include="..\Challenge3_BadgesRepository\Challenge3_BadgesRepository.csproj">
+      <Project>{A68744E5-F2D0-464E-8568-C02B68CB9E58}</Project>
+      <Name>Challenge3_BadgesRepository</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
