@@ -168,7 +168,7 @@ namespace Challenge1_CafeConsole
             Console.Clear();
             DisplayAllMenuItems();
 
-            Console.WriteLine("Enter Item To Remove");
+            Console.WriteLine("Enter Name To Remove");
             bool wasRemoved = _menuRepo.RemoveItem(Console.ReadLine());
             if (wasRemoved)
             {

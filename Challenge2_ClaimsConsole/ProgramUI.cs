@@ -31,17 +31,17 @@ namespace Challenge2_ClaimsConsole
                     case "1":
                     case "one":
                         //SeeAllClaims
-                        ();
+                        ViewAllClaims();
                         break;
                     case "2":
                     case "two":
                         //TakeCareOfNextClaim
-                        ();
+                        NextClaim();
                         break;
                     case "3":
                     case "three":
                         //EnterNewClaim
-                        ();
+                        NewClaim();
                         break;
                     case "4":
                     case "four":
