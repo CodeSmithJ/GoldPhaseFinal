@@ -77,7 +77,7 @@ namespace Challenge2_ClaimsConsole
                 case "no":
                     break;
                 default:
-                    Console.WriteLine("(Not A Valid Input)");
+                    Console.WriteLine("Not A Valid Input");
                     break;
             }
         }

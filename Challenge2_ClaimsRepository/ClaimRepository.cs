@@ -14,6 +14,7 @@ namespace Challenge2_ClaimsRepository
         {
             return _claimList;
         }
+
         // Get claim by id
         public Claim GetClaimByID(int claimID)
         {
@@ -36,6 +37,12 @@ namespace Challenge2_ClaimsRepository
             bool canConfirm = (_claimList.Count > claimOrder) ? true : false;
             return canConfirm;
         }
+        //Peek Claim
+        public Claim PeekClaim()
+        {
+            return _claimList.Peek();
+        }
+        //Update Claim
         public bool UpdateClaim(int claimID, Claim updatedID)
         {
             Claim oldClaim = GetClaimByID(claimID);
