@@ -12,7 +12,7 @@ namespace Challenge2_ClaimsConsole
         public ClaimRepository _claimRepository = new ClaimRepository();
         public void Run()
         {
-            SaveClaims();
+            SavedClaim();
             Menu();
         }
         private void Menu()
@@ -57,6 +57,12 @@ namespace Challenge2_ClaimsConsole
                 Console.Clear();
             }
         }
+
+        public void ViewAllClaims()
+        {
+
+        }
+
         public void NextClaim()
         {
             Console.Write("Check Next Claim? (y/n)?");
@@ -74,6 +80,22 @@ namespace Challenge2_ClaimsConsole
                     Console.WriteLine("(Not A Valid Input)");
                     break;
             }
+        }
+
+        public void NewClaim()
+        {
+
+        }
+
+        public void SavedClaim()
+        {
+            Claim carAccident = new Claim(1, ClaimType.Car, "Car accident on 465.", 400.00, new DateTime(2018, 04, 25), new DateTime(2018, 04, 27));
+            Claim homeFire = new Claim(2, ClaimType.Home, "House fire in kitchen.", 4000.00, new DateTime(2018, 04, 11), new DateTime(2018, 04, 12));
+            Claim stolenCakes = new Claim(3, ClaimType.Theft, "Stolen pancakes.", 4.00, new DateTime(2018, 04, 27), new DateTime(2018, 06, 01));
+
+            _claimRepository.AddNewClaim(carAccident);
+            _claimRepository.AddNewClaim(homeFire);
+            _claimRepository.AddNewClaim(stolenCakes);
         }
     }
 }

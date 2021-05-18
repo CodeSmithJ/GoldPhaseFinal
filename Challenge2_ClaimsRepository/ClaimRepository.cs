@@ -29,14 +29,44 @@ namespace Challenge2_ClaimsRepository
             return null;
         }
         //Enter new claim
-        public void AddNewClaim(Claim newClaim)
-        { 
+        public bool AddNewClaim(Claim newClaim)
+        {
+            int claimOrder = _claimList.Count;
             _claimList.Enqueue(newClaim);
+            bool canConfirm = (_claimList.Count > claimOrder) ? true : false;
+            return canConfirm;
+        }
+        public bool UpdateClaim(int claimID, Claim updatedID)
+        {
+            Claim oldClaim = GetClaimByID(claimID);
+            if (oldClaim != null)
+            {
+                oldClaim.ClaimID = updatedID.ClaimID;
+                oldClaim.TypeOfClaim = updatedID.TypeOfClaim;
+                oldClaim.Description = updatedID.Description;
+                oldClaim.ClaimAmount = updatedID.ClaimAmount;
+                oldClaim.DateOfIncident = updatedID.DateOfIncident;
+                oldClaim.DateOfClaim = updatedID.DateOfClaim;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         // Dequeue claim
-        public void RemoveClaim()
+        public bool RemoveClaim(int IDToRemove)
         {
-            _claimList.Dequeue();
+            Claim claimToRemove = GetClaimByID(IDToRemove);
+            if (claimToRemove == null)
+            {
+                return false;
+            }
+            else
+            {
+                _claimList.Dequeue();
+                return true;
+            }
         }
     }
 }

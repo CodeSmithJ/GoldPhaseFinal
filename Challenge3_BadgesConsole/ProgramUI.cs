@@ -57,5 +57,9 @@ namespace Challenge3_BadgesConsole
                 Console.Clear();
             }
         }
+        public void SaveBadges()
+        {
+
+        }
     }
 }
