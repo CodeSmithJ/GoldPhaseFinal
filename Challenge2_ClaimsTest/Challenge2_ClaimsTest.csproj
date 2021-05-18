@@ -57,6 +57,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Challenge1_CafeRepository\Challenge1_CafeRepository.csproj">
+      <Project>{D0012EFC-7CCC-4FEE-B007-073EEABFB1A8}</Project>
+      <Name>Challenge1_CafeRepository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Challenge2_ClaimsRepository\Challenge2_ClaimsRepository.csproj">
       <Project>{EA8D3666-11A4-487B-9EE7-250ABDFFE526}</Project>
       <Name>Challenge2_ClaimsRepository</Name>

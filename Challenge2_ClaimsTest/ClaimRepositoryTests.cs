@@ -1,7 +1,6 @@
 ﻿using Challenge2_ClaimsRepository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Security.Claims;
 
 namespace Challenge2_ClaimsTest
 {

@@ -34,7 +34,7 @@ namespace Challenge2_ClaimsRepository
         {
             int claimOrder = _claimList.Count;
             _claimList.Enqueue(newClaim);
-            bool canConfirm = (_claimList.Count > claimOrder) ? true : false;
+            bool canConfirm = (_claimList.Count > claimOrder);
             return canConfirm;
         }
         //Peek Claim

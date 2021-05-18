@@ -31,17 +31,17 @@ namespace Challenge3_BadgesConsole
                     case "1":
                     case "one":
                         //Add a badge
-                        ();
+                        AddNewBadge();
                         break;
                     case "2":
                     case "two":
                         //edit a badge
-                        ();
+                        UpdateBadge();
                         break;
                     case "3":
                     case "three":
                         //List all badges
-                        ();
+                        ViewAllBadges();
                         break;
                     case "4":
                     case "four":
@@ -56,6 +56,18 @@ namespace Challenge3_BadgesConsole
                 Console.ReadKey();
                 Console.Clear();
             }
+        }
+        public void AddNewBadge()
+        {
+
+        }
+        public void UpdateBadge()
+        {
+
+        }
+        public void ViewAllBadges()
+        {
+
         }
         public void SaveBadges()
         {
