@@ -63,13 +63,15 @@ namespace Challenge2_ClaimsConsole
             switch (Console.ReadLine().ToLower())
             {
                 case "y":
+                case "yes":
                     _claimRepository.();
                     Console.WriteLine("Claim Removed From Queue");
                     break;
                 case "n":
+                case "no":
                     break;
                 default:
-                    Console.WriteLine("Invalid.");
+                    Console.WriteLine("(Not A Valid Input)");
                     break;
             }
         }

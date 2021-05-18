@@ -8,13 +8,19 @@ namespace Challenge2_ClaimsTest
     [TestClass]
     public class ClaimRepositoryTests
     {
+        public void Arrange()
+        {
+            _repo = new MenuRepository();
+            _item = new MenuItem(ComboMeal.ChickenNuggets, "Chicken Nuggets", "8 Piece Nugget Meal", 5.99);
+        }
+
         [TestMethod]
         public void DisplayAllClaims_AllClaims()
         {
         }
 
         [TestMethod]
-        public void MyTestMethod()
+        public void GetClaimByID_ShouldGetByID()
         {
         }
 
@@ -27,6 +33,5 @@ namespace Challenge2_ClaimsTest
         public void RemoveClaimFromMenu()
         {
         }
-
     }
 }
