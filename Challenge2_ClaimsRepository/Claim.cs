@@ -15,17 +15,15 @@ namespace Challenge2_ClaimsRepository
         public double ClaimAmount { get; set; }
         public DateTime DateOfIncident { get; set; }
         public DateTime DateOfClaim { get; set; }
-        public bool IsValid()
+        public bool IsValid
         {
-            TimeSpan timeSpan = DateOfClaim - DateOfIncident;
-            int days = timeSpan.Days; 
-            if (days <= 30)
+            get
             {
-                return true;
+                double days = (DateOfClaim - DateOfIncident).TotalDays;
+                return (days >= 0 && days <= 30);
             }
-            return false;
         }
-    public Claim() { }
+        public Claim() { }
         public Claim(int claimID, ClaimType typeOfClaim, string description, double claimAmount, DateTime dateOfIncident, DateTime dateOfClaim)
         {
             ClaimID = claimID;

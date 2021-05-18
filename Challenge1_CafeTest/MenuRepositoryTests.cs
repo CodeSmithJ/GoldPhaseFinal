@@ -17,7 +17,6 @@ namespace Challenge1_CafeTest
         {
             _repo = new MenuRepository();
             _item = new MenuItem(ComboMeal.ChickenNuggets, "Chicken Nuggets", "8 Piece Nugget Meal", 5.99);
-            _repo.AddToOrder(_item);
         }
 
         [TestMethod]

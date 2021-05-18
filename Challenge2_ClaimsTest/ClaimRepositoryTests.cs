@@ -1,5 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Challenge2_ClaimsRepository;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Security.Claims;
 
 namespace Challenge2_ClaimsTest
 {
@@ -7,8 +9,24 @@ namespace Challenge2_ClaimsTest
     public class ClaimRepositoryTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void DisplayAllClaims_AllClaims()
         {
         }
+
+        [TestMethod]
+        public void MyTestMethod()
+        {
+        }
+
+        [TestMethod]
+        public void AddClaim_ShouldAddClaim()
+        {
+        }
+
+        [TestMethod]
+        public void RemoveClaimFromMenu()
+        {
+        }
+
     }
 }
