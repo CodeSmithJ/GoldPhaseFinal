@@ -39,17 +39,6 @@ namespace Challenge1_CafeTest
         }
 
         [TestMethod]
-        public void GetOrderByCombo_ShouldGetCombo()
-        {
-            MenuItem menuItem = new MenuItem();
-            MenuRepository repository = new MenuRepository();
-            repository.AddToOrder(menuItem);
-            List<MenuItem> directory = repository.AllItems();
-            bool menuHasMeal = directory.Contains(menuItem);
-            Assert.IsTrue(menuHasMeal);
-        }
-
-        [TestMethod]
         public void RemoveItem_ShouldDelete()
         {
             bool wasDeleted = _repo.RemoveItem("Chicken Nuggets");

@@ -22,46 +22,31 @@ namespace Challenge1_CafeConsole
             {
                 Console.WriteLine("Select a menu option:\n" +
                     "1. Create New Meal\n" +
-                    "2. View All Meals\n" +
+                    "2. Remove Meal\n" +
                     "3. View All Combos\n" +
-                    "4. Update Meal\n" +
-                    "5. Remove Meal\n" +
-                    "6. Exit");
+                    "4. Exit");
                 string input = Console.ReadLine();
                 switch (input.ToLower())
                 {
                     case "1":
                     case "one":
-                        //CreateNewContent
                         CreateNewMenuItem();
                         break;
                     case "2":
                     case "two":
-                        //ViewAllContent
-                        DisplayAllMenuItems();
+                        DeleteMenuItem();
                         break;
                     case "3":
                     case "three":
-                        //View Content By Title
-                        DisplayCombos();
+                        DisplayAllMenuItems();
                         break;
                     case "4":
                     case "four":
-                        //Update Existing Content
-                        UpdateMenuItem();
-                        break;
-                    case "5":
-                    case "five":
-                        //Delete Existing Content
-                        DeleteMenuItem();
-                        break;
-                    case "6":
-                    case "six":
                         //Exit
                         keepRunning = false;
                         break;
                     default:
-                        Console.WriteLine("Please enter 1 - 5");
+                        Console.WriteLine("Please enter 1 - 4");
                         break;
                 }
                 Console.WriteLine("Please press any key to continue");
@@ -72,29 +57,24 @@ namespace Challenge1_CafeConsole
         private void CreateNewMenuItem()
         {
             Console.Clear();
-            MenuItem newMenuItem = new MenuItem();
+            MenuItem newItem = new MenuItem();
 
-            Console.WriteLine("What Number For New Combo:\n" +
-                "\n" +
-                "Current Combos\n" +
-                "1. Chicken Nuggets\n" +
-                "2. Cheese Burger\n" +
-                "3. Fish Sandwich\n" +
-                "4. Chicken Sandwich\n" +
-                "5. Ham Burger\n");
-            string comboAsString = Console.ReadLine();
-            int comboAsInt = Convert.ToInt32(comboAsString);
-            newMenuItem.NumberMeal = (ComboMeal)comboAsInt;
-            _menuRepo.AddToOrder(newMenuItem);
+            Console.WriteLine("Whats The Number For New Combo?");
+            newItem.Combo = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("Menu Item Name?");
-            newMenuItem.MealName = Console.ReadLine();
+            newItem.MealName = Console.ReadLine();
 
-            Console.WriteLine("Describe This Item");
-            newMenuItem.Description = Console.ReadLine();
+            Console.WriteLine("Describe The Item...");
+            newItem.Description = Console.ReadLine();
+
+            Console.WriteLine("Whats Its Ingredients?");
+            newItem.Ingredients = Console.ReadLine();
 
             Console.WriteLine("How Much For This Item?");
-            newMenuItem.Price = Convert.ToDouble(Console.ReadLine());
+            newItem.Price = Convert.ToDouble(Console.ReadLine());
+
+            _menuRepo.AddToOrder(newItem);
 
         }
         private void DisplayAllMenuItems()
@@ -103,66 +83,16 @@ namespace Challenge1_CafeConsole
             List<MenuItem> allItems = _menuRepo.AllItems();
             foreach (MenuItem menuItem in allItems)
             {
-                Console.WriteLine($"Combo: {menuItem.NumberMeal}\n" +
+                Console.WriteLine($"Combo: {menuItem.Combo}\n" +
                     $"Name: {menuItem.MealName}\n" +
                     $"Description: {menuItem.Description}\n" +
-                    $"Price: {menuItem.Price}");
+                    $"Ingredients: {menuItem.Ingredients}\n" +
+                    $"Price: {menuItem.Price}\n" +
+                    $"========================================================");
             }
-        }
-        private void DisplayCombos()
-
-        {
-            Console.Clear();
-            List<MenuItem> allItems = _menuRepo.AllItems();
-            foreach (MenuItem menuItem in allItems)
-            {
-                Console.WriteLine($"Combo: {menuItem.NumberMeal}\n" +
-                    $"Name: {menuItem.MealName}\n" +
-                    $"Name: {menuItem.Description}\n" +
-                    $"Price: {menuItem.Price}");
-            }
+            Console.WriteLine();
         }
 
-
-        private void UpdateMenuItem()
-        {
-            Console.Clear();
-            DisplayAllMenuItems();
-            Console.WriteLine("Enter the Meal Name you want to update");
-            string oldMenuItem = Console.ReadLine();
-            MenuItem newMenuItem = new MenuItem();
-
-            Console.WriteLine("Update Meal:\n" +
-                "1. ChickenNuggets\n" +
-                "2. CheeseBurger\n" +
-                "3. FishSandwich\n" +
-                "4. ChickenSandwich\n" +
-                "5. HamBurger\n");
-            string comboAsString = Console.ReadLine();
-            int comboAsInt = Convert.ToInt32(comboAsString);
-            newMenuItem.NumberMeal = (ComboMeal)comboAsInt;
-            _menuRepo.AddToOrder(newMenuItem);
-
-            Console.WriteLine("Menu Item Name?");
-            newMenuItem.MealName = Console.ReadLine();
-
-            Console.WriteLine("Describe This Item");
-            newMenuItem.Description = Console.ReadLine();
-
-            Console.WriteLine("How Much For This Item?");
-            newMenuItem.Price = Convert.ToDouble(Console.ReadLine());
-
-            bool wasUpdated = _menuRepo.UpdateMenuItem(oldMenuItem, newMenuItem);
-            if (wasUpdated)
-            {
-                Console.WriteLine("Item successfully updated!");
-            }
-            else
-            {
-                Console.WriteLine("Item was not updated");
-            }
-
-        }
         private void DeleteMenuItem()
         {
             Console.Clear();
@@ -182,11 +112,11 @@ namespace Challenge1_CafeConsole
         }
         private void SaveOrderList()
         {
-            MenuItem nugs = new MenuItem(ComboMeal.ChickenNuggets, "Chicken Nuggets", "8 Chicken Nuggets", 6.50);
-            MenuItem chezburg = new MenuItem(ComboMeal.CheeseBurger, "Cheese Burger", "Hamburger with Cheese", 6.70);
-            MenuItem fishsand = new MenuItem(ComboMeal.FishSandwich, "Fish Sandwich", "Standard Fish Sandwich", 7.50);
-            MenuItem chicksand = new MenuItem(ComboMeal.ChickenSandwich, "Chicken Sandwich", "Standard Chicken Sandwich", 5.30);
-            MenuItem hamburg = new MenuItem(ComboMeal.HamBurger, "Ham Burger", "Standard Hamburger", 5.50);
+            MenuItem nugs = new MenuItem(1, "Chicken Nuggets", "8 Dino Nuggets", "8 Nuggets, French Fries", 6.50);
+            MenuItem chezburg = new MenuItem(2, "Cheeseburger", "Classic Cheese Burger", "Beef Patty, American Cheese, Lettuce", 5.25);
+            MenuItem fishsand = new MenuItem(3, "Chicken Sandwich", "Classic Chicken Sandwich", "Chicken Patty, Pepperjack Cheese, Lettuce", 4.50);
+            MenuItem chicksand = new MenuItem(4, "Fish Fillet", "Fish Fillet Sandwich", "Fish Fillet, American Cheese, Tarter Sauce ", 1.50);
+            MenuItem hamburg = new MenuItem(5, "Hamburger", "Classic Hamburger", "Beef Patty, American Cheese, Lettuce", 5.50);
             _menuRepo.AddToOrder(nugs);
             _menuRepo.AddToOrder(chezburg);
             _menuRepo.AddToOrder(fishsand);
