@@ -110,6 +110,62 @@ namespace Challenge1_CafeConsole
             }
 
         }
+        private void CreateNewMenuItem()
+        {
+            Console.Clear();
+            MenuItem newItem = new MenuItem();
+
+            Console.WriteLine("Whats The Number For New Combo?");
+            newItem.Combo = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Menu Item Name?");
+            newItem.MealName = Console.ReadLine();
+
+            Console.WriteLine("Describe The Item...");
+            newItem.Description = Console.ReadLine();
+
+            Console.WriteLine("Whats Its Ingredients?");
+            newItem.Ingredients = Console.ReadLine();
+
+            Console.WriteLine("How Much For This Item?");
+            newItem.Price = Convert.ToDouble(Console.ReadLine());
+
+            _menuRepo.AddToOrder(newItem);
+
+        }
+        private void DisplayAllMenuItems()
+        {
+            Console.Clear();
+            List<MenuItem> allItems = _menuRepo.AllItems();
+            foreach (MenuItem menuItem in allItems)
+            {
+                Console.WriteLine($"Combo: {menuItem.Combo}\n" +
+                    $"Name: {menuItem.MealName}\n" +
+                    $"Description: {menuItem.Description}\n" +
+                    $"Ingredients: {menuItem.Ingredients}\n" +
+                    $"Price: {menuItem.Price}\n" +
+                    $"========================================================");
+            }
+            Console.WriteLine();
+        }
+
+        private void DeleteMenuItem()
+        {
+            Console.Clear();
+            DisplayAllMenuItems();
+
+            Console.WriteLine("Enter Combo Number To Remove");
+            bool wasRemoved = _menuRepo.RemoveItem(Convert.ToInt32(Console.ReadLine()));
+            if (wasRemoved)
+            {
+                Console.WriteLine("Item was Removed!");
+            }
+            else
+            {
+                Console.WriteLine("Item was NOT Removed!");
+            }
+
+        }
         private void SaveOrderList()
         {
             MenuItem nugs = new MenuItem(1, "Chicken Nuggets", "8 Nuggets, French Fries", "8 Dino Nuggets", 6.50);
