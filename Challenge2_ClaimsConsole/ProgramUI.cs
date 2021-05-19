@@ -60,32 +60,90 @@ namespace Challenge2_ClaimsConsole
 
         public void ViewAllClaims()
         {
-
-        }
-        public void NextClaim()
-        {
-            Console.Write("Check Next Claim? (y/n)?");
-            switch (Console.ReadLine().ToLower())
             {
-                case "y":
-                case "yes":
-                    _claimRepository.();
-                    Console.WriteLine("Claim Removed From Queue");
-                    break;
-                case "n":
-                case "no":
-                    break;
-                default:
-                    Console.WriteLine("Not A Valid Input");
-                    break;
+                Console.Clear();
+                Queue<Claim> claimList = _claimRepository.DisplayAllClaimList();
+
+                Console.WriteLine("ClaimID     Type        Description       Amount    DateOfAccident    DateOfClaim    IsValid\n");
+                foreach (Claim list in claimList)
+                {
+                    Console.WriteLine($"#   {list.ClaimID}        {list.TypeOfClaim}        {list.Description}  ${list.ClaimAmount}    {list.DateOfIncident.ToShortDateString()}         {list.DateOfClaim.ToShortDateString()}        {list.IsValid}");
+                }
+                Console.ReadLine();
             }
         }
 
-        public void NewClaim()
+        public void NextClaim()
         {
+            Console.Clear();
+            Console.WriteLine("Here are the details on the next claim to be handled: \n");
 
+            Queue<Claim> claimList = _claimRepository.DisplayAllClaimList();
+            Claim peekClaim = claimList.Peek();
+
+            Console.WriteLine($"ID: {peekClaim.ClaimID}\n" +
+            $"Type: {peekClaim.TypeOfClaim}\n" +
+            $"Description: {peekClaim.Description}\n" +
+            $"Amount: {peekClaim.ClaimAmount}\n" +
+            $"DateOfAccident: {peekClaim.DateOfIncident.ToShortDateString()}\n" +
+            $"DateOfClaim: {peekClaim.DateOfClaim.ToShortDateString()}\n" +
+            $"IsValid: {peekClaim.IsValid}\n" +
+            $"\n" +
+            $"Do you want to deal with this claim now(y/n)");
+
+            string userInput = Console.ReadLine();
+            switch (userInput.ToLower())
+            {
+                case "y":
+                    _claimRepository.DequeueClaim();
+                    Console.WriteLine();
+                    Console.WriteLine("You can now deal with this claim");
+                    break;
+                case "n":
+                    Console.Clear();
+                    Menu();
+                    break;
+                default:
+                    break;
+            }
+            Console.ReadLine();
         }
 
+
+
+        public void NewClaim()
+        {
+            Console.Clear();
+            Claim newClaim = new Claim();
+            Console.WriteLine("Enter the claim id:");
+            int claimID = Convert.ToInt32(Console.ReadLine());
+            newClaim.ClaimID = claimID;
+            Console.WriteLine("Enter the claim type: \n" +
+                "1. Car \n" +
+                "2. Home \n" +
+                "3. Theft");
+            int claimType = Convert.ToInt32(Console.ReadLine());
+            newClaim.TypeOfClaim = (ClaimType)claimType;
+            Console.WriteLine("Claim a claim description: ");
+            newClaim.Description = Console.ReadLine();
+            Console.WriteLine("Amount of Damage: ");
+            string claimAmount = Console.ReadLine();
+            newClaim.ClaimAmount = Convert.ToDouble(claimAmount);
+            Console.WriteLine("Date Of Accident: ");
+            string accidentDate = Console.ReadLine();
+            newClaim.DateOfIncident = DateTime.Parse(accidentDate);
+            Console.WriteLine("Date of Claim: ");
+            string claimDate = Console.ReadLine();
+            newClaim.DateOfClaim = DateTime.Parse(claimDate);
+            _claimRepository.AddNewClaim(newClaim);
+            Console.WriteLine();
+            if (newClaim.IsValid == true)
+            {
+                Console.WriteLine("This claim is valid.");
+            }
+            else
+            { Console.WriteLine("This claim is invalid."); }
+        }
         public void SavedClaim()
         {
             Claim carAccident = new Claim(1, ClaimType.Car, "Car accident on 465.", 400.00, new DateTime(2018, 04, 25), new DateTime(2018, 04, 27));

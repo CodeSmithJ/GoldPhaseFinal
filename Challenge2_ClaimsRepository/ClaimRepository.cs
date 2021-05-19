@@ -21,7 +21,6 @@ namespace Challenge2_ClaimsRepository
         {
             return _claimList.Dequeue();
         }
-
         public void AddNewClaim(Claim newClaim)
         {
             _claimList.Enqueue(newClaim);
