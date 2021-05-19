@@ -23,10 +23,10 @@ namespace Challenge2_ClaimsTest
         }
 
         [TestMethod]
-        public void AddClaim_ShouldAddClaim()
+        public void AddClaim_ShouldEnqueueClaim()
         {
-            int expected = 1;
-            int actual = _claimRepo.DisplayAllClaimList().Count;
+            Claim expected = _claimItem;
+            Claim actual = _claimRepo.PeekClaim();
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
@@ -43,8 +43,7 @@ namespace Challenge2_ClaimsTest
         [TestMethod]
         public void PeekTheClaim_ShouldPeekClaim()
         {
-            Claim peekClaim = _claimRepo.PeekClaim();
-
+            _claimRepo.PeekClaim();
             Assert.AreEqual(_claimRepo.PeekClaim(), _claimItem);
         }
 
@@ -54,7 +53,6 @@ namespace Challenge2_ClaimsTest
             _claimRepo.DequeueClaim();
             Claim newClaim = _claimItem2;
             Claim checkClaim = _claimRepo.PeekClaim();
-
             Assert.AreEqual(newClaim.ClaimID, checkClaim.ClaimID);
         }
 
