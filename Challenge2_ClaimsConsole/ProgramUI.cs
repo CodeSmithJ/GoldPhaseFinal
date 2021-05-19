@@ -60,6 +60,7 @@ namespace Challenge2_ClaimsConsole
 
         public void ViewAllClaims()
         {
+
         }
         public void NextClaim()
         {
@@ -87,9 +88,9 @@ namespace Challenge2_ClaimsConsole
 
         public void SavedClaim()
         {
-            Claims carAccident = new Claims(1, ClaimType.Car, "Car accident on 465.", 400.00, new DateTime(2018, 04, 25), new DateTime(2018, 04, 27));
-            Claims homeFire = new Claims(2, ClaimType.Home, "House fire in kitchen.", 4000.00, new DateTime(2018, 04, 11), new DateTime(2018, 04, 12));
-            Claims stolenCakes = new Claims(3, ClaimType.Theft, "Stolen pancakes.", 4.00, new DateTime(2018, 04, 27), new DateTime(2018, 06, 01));
+            Claim carAccident = new Claim(1, ClaimType.Car, "Car accident on 465.", 400.00, new DateTime(2018, 04, 25), new DateTime(2018, 04, 27));
+            Claim homeFire = new Claim(2, ClaimType.Home, "House fire in kitchen.", 4000.00, new DateTime(2018, 04, 11), new DateTime(2018, 04, 12));
+            Claim stolenCakes = new Claim(3, ClaimType.Theft, "Stolen pancakes.", 4.00, new DateTime(2018, 04, 27), new DateTime(2018, 06, 01));
 
             _claimRepository.AddNewClaim(carAccident);
             _claimRepository.AddNewClaim(homeFire);

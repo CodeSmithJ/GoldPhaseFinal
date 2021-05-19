@@ -20,7 +20,7 @@ namespace Challenge2_ClaimsRepository
         {
             foreach (Claim claim in _claimList)
             {
-                if (claimID == claim.ClaimID)
+                if (claim.ClaimID == claimID)
                 {
                     return claim;
                 }
@@ -54,6 +54,7 @@ namespace Challenge2_ClaimsRepository
                 oldClaim.ClaimAmount = updatedID.ClaimAmount;
                 oldClaim.DateOfIncident = updatedID.DateOfIncident;
                 oldClaim.DateOfClaim = updatedID.DateOfClaim;
+                oldClaim.IsValid = updatedID.IsValid;
                 return true;
             }
             else
@@ -62,18 +63,9 @@ namespace Challenge2_ClaimsRepository
             }
         }
         // Dequeue claim
-        public bool RemoveClaim(int iDToRemove)
+        public Claim RemoveClaim()
         {
-            Claim claimToRemove = GetClaimByID(iDToRemove);
-            if (claimToRemove == null)
-            {
-                return false;
-            }
-            else
-            {
-                _claimList.Dequeue();
-                return true;
-            }
+            return _claimList.Dequeue();
         }
     }
 }

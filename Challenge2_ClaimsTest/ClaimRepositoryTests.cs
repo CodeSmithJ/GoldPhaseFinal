@@ -40,10 +40,10 @@ namespace Challenge2_ClaimsTest
         [TestMethod]
         public void AddClaim_ShouldAddClaim()
         {
-            Claim claimItem = new Claim();
-            ClaimRepository repository = new ClaimRepository();
-            bool wasAdded = repository.AddNewClaim(claimItem);
-            Assert.IsTrue(wasAdded);
+            _claimRepo.AddClaim(_claimItem);
+            int newClaimID = 1;
+            int oldClaimID = 1;
+            Assert.AreEqual(newClaimID, oldClaimID);
         }
 
         [TestMethod]
