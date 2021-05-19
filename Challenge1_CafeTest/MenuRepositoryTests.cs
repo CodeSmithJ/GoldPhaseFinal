@@ -41,7 +41,7 @@ namespace Challenge1_CafeTest
         [TestMethod]
         public void RemoveItem_ShouldDelete()
         {
-            bool wasDeleted = _repo.RemoveItem("Chicken Nuggets");
+            bool wasDeleted = _repo.RemoveItem(1);
             Assert.IsTrue(wasDeleted);
         }
     }
