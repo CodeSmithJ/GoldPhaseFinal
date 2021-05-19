@@ -19,11 +19,11 @@ namespace Challenge1_CafeRepository
             _menuItem.Add(newItem);
         }
 
-        public MenuItem GetOrderByMealName(string mealName)
+        public MenuItem GetOrderByCombo(int combo)
         {
             foreach (MenuItem meal in _menuItem)
             {
-                if (meal.MealName.ToLower() == mealName.ToLower())
+                if (meal.Combo == combo)
                 {
                     return meal;
                 }
@@ -31,9 +31,9 @@ namespace Challenge1_CafeRepository
             return null;
         }
 
-        public bool RemoveItem(string itemToRemove)
+        public bool RemoveItem(int itemToRemove)
         {
-            MenuItem mealToRemove = GetOrderByMealName(itemToRemove);
+            MenuItem mealToRemove = GetOrderByCombo(itemToRemove);
             if (mealToRemove == null)
             {
                 return false;

@@ -28,7 +28,7 @@ namespace Challenge1_CafeTest
         }
 
         [TestMethod]
-        public void GetOrderByName_ShouldGetName()
+        public void GetOrderByCombo_ShouldGetCombo()
         {
             MenuItem menuItem = new MenuItem();
             MenuRepository repository = new MenuRepository();

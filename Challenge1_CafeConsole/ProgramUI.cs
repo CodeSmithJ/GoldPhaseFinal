@@ -98,11 +98,11 @@ namespace Challenge1_CafeConsole
             Console.Clear();
             DisplayAllMenuItems();
 
-            Console.WriteLine("Enter Name To Remove");
-            bool wasRemoved = _menuRepo.RemoveItem(Console.ReadLine());
+            Console.WriteLine("Enter Combo Number To Remove");
+            bool wasRemoved = _menuRepo.RemoveItem(Convert.ToInt32(Console.ReadLine()));
             if (wasRemoved)
             {
-                Console.WriteLine("Item Removed");
+                Console.WriteLine("Item was Removed");
             }
             else
             {
