@@ -41,13 +41,21 @@ namespace Challenge2_ClaimsTest
         }
 
         [TestMethod]
+        public void PeekTheClaim_ShouldPeekClaim()
+        {
+            Claim peekClaim = _claimRepo.PeekClaim();
+
+            Assert.AreEqual(_claimRepo.PeekClaim(), _claimItem);
+        }
+
+        [TestMethod]
         public void DequeueClaim_ShouldDequeueClaim()
         {
             _claimRepo.DequeueClaim();
             Claim newClaim = _claimItem2;
             Claim checkClaim = _claimRepo.PeekClaim();
 
-            Assert.AreNotEqual(newClaim.ClaimID, checkClaim.ClaimID);
+            Assert.AreEqual(newClaim.ClaimID, checkClaim.ClaimID);
         }
 
     }
