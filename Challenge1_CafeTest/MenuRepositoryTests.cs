@@ -15,16 +15,16 @@ namespace Challenge1_CafeTest
         public void Arrange()
         {
             _repo = new MenuRepository();
-            _item = new MenuItem(ComboMeal.ChickenNuggets, "Chicken Nuggets", "8 Piece Nugget Meal", 5.99);
+            _item = new MenuItem(1, "Chicken Nuggets", "Dino Nuggets", "8 Nuggets", 5.99);
         }
 
         [TestMethod]
         public void AddToItemOrder_ShouldReturnTrue()
         {
-            MenuItem menuItem = new MenuItem();
-            MenuRepository repository = new MenuRepository();
-            bool testResult = repository.AddToOrder(menuItem);
-            Assert.IsTrue(testResult);
+            _repo.AddToOrder(_item);
+            string newMealName = "Dino Nuggets";
+            string oldMealName = "Chicken Nuggets";
+            Assert.AreEqual(oldMealName, newMealName);
         }
 
         [TestMethod]
@@ -48,14 +48,6 @@ namespace Challenge1_CafeTest
             bool menuHasMeal = directory.Contains(menuItem);
             Assert.IsTrue(menuHasMeal);
         }
-
-        [TestMethod]
-        public void UpdateMenu_MenuShouldUpdate()
-        {
-            _repo.UpdateMenuItem("Chicken Nuggets", new MenuItem(ComboMeal.ChickenNuggets, "New Chicken Nuggets", "8 Piece Nugget", 7.50));
-            Assert.AreEqual(_item.MealName, "New Chicken Nuggets");
-        }
-
 
         [TestMethod]
         public void RemoveItem_ShouldDelete()
