@@ -112,11 +112,11 @@ namespace Challenge1_CafeConsole
         }
         private void SaveOrderList()
         {
-            MenuItem nugs = new MenuItem(1, "Chicken Nuggets", "8 Dino Nuggets", "8 Nuggets, French Fries", 6.50);
-            MenuItem chezburg = new MenuItem(2, "Cheeseburger", "Classic Cheese Burger", "Beef Patty, American Cheese, Lettuce", 5.25);
-            MenuItem fishsand = new MenuItem(3, "Chicken Sandwich", "Classic Chicken Sandwich", "Chicken Patty, Pepperjack Cheese, Lettuce", 4.50);
-            MenuItem chicksand = new MenuItem(4, "Fish Fillet", "Fish Fillet Sandwich", "Fish Fillet, American Cheese, Tarter Sauce ", 1.50);
-            MenuItem hamburg = new MenuItem(5, "Hamburger", "Classic Hamburger", "Beef Patty, American Cheese, Lettuce", 5.50);
+            MenuItem nugs = new MenuItem(1, "Chicken Nuggets", "8 Nuggets, French Fries", "8 Dino Nuggets", 6.50);
+            MenuItem chezburg = new MenuItem(2, "Cheeseburger", "Beef Patty, American Cheese, Lettuce", "Classic Cheese Burger", 5.25);
+            MenuItem fishsand = new MenuItem(3, "Chicken Sandwich", "Chicken Patty, Pepperjack Cheese, Lettuce", "Classic Chicken Sandwich", 4.50);
+            MenuItem chicksand = new MenuItem(4, "Fish Fillet", "Fish Fillet, American Cheese, Tarter Sauce ", "Fish Fillet Sandwich", 1.50);
+            MenuItem hamburg = new MenuItem(5, "Hamburger", "Beef Patty, American Cheese, Lettuce", "Classic Hamburger", 5.50);
             _menuRepo.AddToOrder(nugs);
             _menuRepo.AddToOrder(chezburg);
             _menuRepo.AddToOrder(fishsand);
