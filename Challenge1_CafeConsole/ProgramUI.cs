@@ -74,14 +74,14 @@ namespace Challenge1_CafeConsole
             Console.Clear();
             MenuItem newMenuItem = new MenuItem();
 
-            Console.WriteLine("Add New Combo:\n" +
+            Console.WriteLine("What Number For New Combo:\n" +
                 "\n" +
                 "Current Combos\n" +
-                "1. ChickenNuggets\n" +
-                "2. CheeseBurger\n" +
-                "3. FishSandwich\n" +
-                "4. ChickenSandwich\n" +
-                "5. HamBurger\n");
+                "1. Chicken Nuggets\n" +
+                "2. Cheese Burger\n" +
+                "3. Fish Sandwich\n" +
+                "4. Chicken Sandwich\n" +
+                "5. Ham Burger\n");
             string comboAsString = Console.ReadLine();
             int comboAsInt = Convert.ToInt32(comboAsString);
             newMenuItem.NumberMeal = (ComboMeal)comboAsInt;

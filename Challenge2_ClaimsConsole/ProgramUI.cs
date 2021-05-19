@@ -60,9 +60,7 @@ namespace Challenge2_ClaimsConsole
 
         public void ViewAllClaims()
         {
-
         }
-
         public void NextClaim()
         {
             Console.Write("Check Next Claim? (y/n)?");

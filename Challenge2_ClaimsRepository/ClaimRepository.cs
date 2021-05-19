@@ -10,7 +10,7 @@ namespace Challenge2_ClaimsRepository
     {
         public Queue<Claim> _claimList = new Queue<Claim>();
         // See All Claims
-        public Queue<Claim> DisplayAllClaims()
+        public Queue<Claim> DisplayAllClaimList()
         {
             return _claimList;
         }
@@ -62,9 +62,9 @@ namespace Challenge2_ClaimsRepository
             }
         }
         // Dequeue claim
-        public bool RemoveClaim(int IDToRemove)
+        public bool RemoveClaim(int iDToRemove)
         {
-            Claim claimToRemove = GetClaimByID(IDToRemove);
+            Claim claimToRemove = GetClaimByID(iDToRemove);
             if (claimToRemove == null)
             {
                 return false;

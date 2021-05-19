@@ -1,5 +1,4 @@
-﻿using Challenge1_CafeRepository.Ingredients;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,19 +9,14 @@ namespace Challenge1_CafeRepository
     public class MenuRepository
     {
         public List<MenuItem> _menuItem = new List<MenuItem>();
-        public List<Ingredient> _ingredients = new List<Ingredient>();
-
-        public bool AddToOrder(MenuItem newItem)
-        {
-            int itemOrder = _menuItem.Count;
-            _menuItem.Add(newItem);
-            bool canConfirm = (_menuItem.Count > itemOrder) ? true : false;
-            return canConfirm;
-        }
-
         public List<MenuItem> AllItems()
         {
             return _menuItem;
+        }
+
+        public void AddToOrder(MenuItem newItem)
+        {
+            _menuItem.Add(newItem);
         }
 
         public MenuItem GetOrderByMealName(string mealName)
@@ -37,39 +31,6 @@ namespace Challenge1_CafeRepository
             return null;
         }
 
-        public MenuItem GetOrderByComboNumber(ComboMeal numberMeal)
-        {
-            foreach (MenuItem meal in _menuItem)
-            {
-                if (meal.NumberMeal == numberMeal)
-                {
-                    return meal;
-                }
-            }
-            return null;
-        }
-
-        public List<Ingredient> GetAllIngredients()
-        {
-            return _ingredients;
-        }
-
-        public bool UpdateMenuItem(string mealName, MenuItem updatedMeal)
-        {
-            MenuItem oldItem = GetOrderByMealName(mealName);
-            if (oldItem != null)
-            {
-                oldItem.NumberMeal = updatedMeal.NumberMeal;
-                oldItem.MealName = updatedMeal.MealName;
-                oldItem.Description = updatedMeal.Description;
-                oldItem.Price = updatedMeal.Price;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
         public bool RemoveItem(string itemToRemove)
         {
             MenuItem mealToRemove = GetOrderByMealName(itemToRemove);
