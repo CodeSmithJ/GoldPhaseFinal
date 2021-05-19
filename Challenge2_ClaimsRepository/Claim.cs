@@ -24,7 +24,7 @@ namespace Challenge2_ClaimsRepository
             }
         }
         public Claim() { }
-        public Claim(int claimID, ClaimType typeOfClaim, string description, double claimAmount, DateTime dateOfIncident, DateTime dateOfClaim, bool isValid)
+        public Claim(int claimID, ClaimType typeOfClaim, string description, double claimAmount, DateTime dateOfIncident, DateTime dateOfClaim)
         {
             ClaimID = claimID;
             TypeOfClaim = typeOfClaim;
@@ -32,7 +32,6 @@ namespace Challenge2_ClaimsRepository
             ClaimAmount = claimAmount;
             DateOfIncident = dateOfIncident;
             DateOfClaim = dateOfClaim;
-            IsValid = isValid;
         }
     }
 }

@@ -9,63 +9,22 @@ namespace Challenge2_ClaimsRepository
     public class ClaimRepository
     {
         public Queue<Claim> _claimList = new Queue<Claim>();
-        // See All Claims
         public Queue<Claim> DisplayAllClaimList()
         {
             return _claimList;
         }
-
-        // Get claim by id
-        public Claim GetClaimByID(int claimID)
-        {
-            foreach (Claim claim in _claimList)
-            {
-                if (claim.ClaimID == claimID)
-                {
-                    return claim;
-                }
-            }
-            Console.WriteLine("No Claim With That ID");
-            Console.ReadLine();
-            return null;
-        }
-        //Enter new claim
-        public bool AddNewClaim(Claim newClaim)
-        {
-            int claimOrder = _claimList.Count;
-            _claimList.Enqueue(newClaim);
-            bool canConfirm = (_claimList.Count > claimOrder);
-            return canConfirm;
-        }
-        //Peek Claim
         public Claim PeekClaim()
         {
             return _claimList.Peek();
         }
-        //Update Claim
-        public bool UpdateClaim(int claimID, Claim updatedID)
-        {
-            Claim oldClaim = GetClaimByID(claimID);
-            if (oldClaim != null)
-            {
-                oldClaim.ClaimID = updatedID.ClaimID;
-                oldClaim.TypeOfClaim = updatedID.TypeOfClaim;
-                oldClaim.Description = updatedID.Description;
-                oldClaim.ClaimAmount = updatedID.ClaimAmount;
-                oldClaim.DateOfIncident = updatedID.DateOfIncident;
-                oldClaim.DateOfClaim = updatedID.DateOfClaim;
-                oldClaim.IsValid = updatedID.IsValid;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        // Dequeue claim
-        public Claim RemoveClaim()
+        public Claim DequeueClaim() //Streaming Repository Start Count Check
         {
             return _claimList.Dequeue();
+        }
+
+        public void AddNewClaim(Claim newClaim)
+        {
+            _claimList.Enqueue(newClaim);
         }
     }
 }

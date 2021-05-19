@@ -12,57 +12,43 @@ namespace Challenge2_ClaimsTest
         private Claim _claimItem2;
         private ClaimRepository _claimRepo;
 
+        [TestInitialize]
         public void Arrange()
         {
             _claimRepo = new ClaimRepository();
             _claimItem = new Claim(1, ClaimType.Car, "Car Accident on 465", 400.00, new DateTime(2018, 04, 25), new DateTime(2018, 04, 27));
             _claimItem2 = new Claim(2, ClaimType.Home, "House fire in kitchen.", 4000.00, new DateTime(2018, 04, 11), new DateTime(2018, 04, 12));
             _claimRepo.AddNewClaim(_claimItem);
-        }
-
-        [TestMethod]
-        public void DisplayAllClaims_AllClaims()
-        {
-
-        }
-
-        [TestMethod]
-        public void GetClaimByID_ShouldGetByID()
-        {
-            Claim claimItem = new Claim();
-            ClaimRepository repository = new ClaimRepository();
-            repository.AddNewClaim(claimItem);
-            Queue<Claim> directory = repository.DisplayAllClaims();
-            bool claimHasID = directory.Contains(claimItem);
-            Assert.IsTrue(claimHasID);
+            _claimRepo.AddNewClaim(_claimItem2);
         }
 
         [TestMethod]
         public void AddClaim_ShouldAddClaim()
         {
-            _claimRepo.AddClaim(_claimItem);
-            int newClaimID = 1;
-            int oldClaimID = 1;
-            Assert.AreEqual(newClaimID, oldClaimID);
+            int expected = 1;
+            int actual = _claimRepo.DisplayAllClaimList().Count;
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void DisplayAllClaims_AllClaims()
+        {
+            Claim claimItem = new Claim();
+            ClaimRepository _claimRepo = new ClaimRepository();
+            _claimRepo.AddNewClaim(claimItem);
+            Queue<Claim> Queue = _claimRepo.DisplayAllClaimList();
+            bool listClaims = Queue.Contains(claimItem);
+            Assert.IsTrue(listClaims);
         }
 
         [TestMethod]
-        public void PeekClaim_ShouldReturnSame()
+        public void DequeueClaim_ShouldDequeueClaim()
         {
+            _claimRepo.DequeueClaim();
+            Claim newClaim = _claimItem2;
+            Claim checkClaim = _claimRepo.PeekClaim();
 
+            Assert.AreNotEqual(newClaim.ClaimID, checkClaim.ClaimID);
         }
 
-        [TestMethod]
-        public void UpdateClaim_ShouldUpdate()
-        {
-            _claimRepo.UpdateClaim(1, new Claim(4, ClaimType.Car, "Car Accident on 465", 400.00, new DateTime(2018, 04, 25), new DateTime(2018, 04, 27)));
-            Assert.AreEqual(_claimItem.ClaimID, 1);
-        }
-        [TestMethod]
-        public void RemoveClaim_ShouldDelete()
-        {
-            bool wasDeleted = _claimRepo.RemoveClaim(1);
-            Assert.IsTrue(wasDeleted);
-        }
     }
 }

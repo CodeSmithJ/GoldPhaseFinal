@@ -15,14 +15,14 @@ namespace Challenge1_CafeTest
         public void Arrange()
         {
             _repo = new MenuRepository();
-            _item = new MenuItem(1, "Chicken Nuggets", "Dino Nuggets", "8 Nuggets", 5.99);
+            _item = new MenuItem(1, "Chicken Nuggets", "Chicken Nuggets", "8 Nuggets", 5.99);
         }
 
         [TestMethod]
         public void AddToItemOrder_ShouldReturnTrue()
         {
             _repo.AddToOrder(_item);
-            string newMealName = "Dino Nuggets";
+            string newMealName = "Chicken Nuggets";
             string oldMealName = "Chicken Nuggets";
             Assert.AreEqual(oldMealName, newMealName);
         }
@@ -41,8 +41,8 @@ namespace Challenge1_CafeTest
         [TestMethod]
         public void RemoveItem_ShouldDelete()
         {
-            bool wasDeleted = _repo.RemoveItem(1);
-            Assert.IsTrue(wasDeleted);
+            bool wasRemoved = _repo.RemoveItem(1);
+            Assert.IsTrue(wasRemoved);
         }
     }
 }

@@ -102,11 +102,11 @@ namespace Challenge1_CafeConsole
             bool wasRemoved = _menuRepo.RemoveItem(Convert.ToInt32(Console.ReadLine()));
             if (wasRemoved)
             {
-                Console.WriteLine("Item was Removed");
+                Console.WriteLine("Item was Removed!");
             }
             else
             {
-                Console.WriteLine("Item was NOT removed!");
+                Console.WriteLine("Item was NOT Removed!");
             }
 
         }
