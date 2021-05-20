@@ -1,46 +1,34 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Challenge3_BadgesRepository;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 
 namespace Challenge3_BadgesTest
 {
     [TestClass]
     public class BadgesRepositoryTests
     {
-        private Badges _badge1;
-        private Badges _badge2;
-        private BadgesRepository _badgesRepo;
+        private BadgesRepository _badgesRepository;
 
         [TestInitialize]
         public void Arrange()
         {
-             private Badges _badge1;
-             private Badges _badge2;
-             private BadgesRepository _badgesRepo;
+            _badgesRepository = new BadgesRepository();
+            _badgesRepository.AddNewBadge(12345, new List<string> { "A5" });
         }
-
         [TestMethod]
-        public void DisplayAllClaims_AllClaims()
+        public void ViewBadgesAddBadgesTested_ShouldReturnTrue()
         {
-        }
-
-        [TestMethod]
-        public void GetClaimByID_ShouldGetByID()
-        {
-        }
-
-        [TestMethod]
-        public void AddClaim_ShouldAddClaim()
-        {
-        }
-
-        [TestMethod]
-        public void RemoveClaimFromMenu()
-        {
-        }
-
-        [TestMethod]
-        public void TestMethod1()
-        {
+            BadgesRepository viewRepository = new BadgesRepository();
+            Dictionary<int, List<string>> checkDictonary = viewRepository.ViewAllBadges();
+            if (checkDictonary.ContainsKey(12345))
+            {
+                Console.WriteLine("true");
+            }
+            else
+            {
+                Console.WriteLine("false");
+            }
         }
     }
 }

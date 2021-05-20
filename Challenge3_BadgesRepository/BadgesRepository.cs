@@ -9,32 +9,21 @@ namespace Challenge3_BadgesRepository
     public class BadgesRepository
     {
         public Dictionary<int, List<string>> _badgesDictionary = new Dictionary<int, List<string>>();
-        public Dictionary<int,List<string>> ListAllBadges()
+        public Dictionary<int, List<string>> ViewAllBadges()
         {
             return _badgesDictionary;
         }
-        public void AddNewBadge(int badgeID, List<string> doorNames)
+        public void AddNewBadge(int badgeID, List<string> newDoor)
         {
-            _badgesDictionary.Add(badgeID, doorNames);
+            _badgesDictionary.Add(badgeID, newDoor);
         }
-        public void EditBadgeByBadgeID(int badgeID)
+        public void AddNewDoorToBadge(int badgeID, string addDoor)
         {
-            Badges badges = new Badges(badgeID, List<string>);
+            _badgesDictionary[badgeID].Add(addDoor);
         }
-
-        public void AddNewDoorToID(int badgeID, List<string> door)
+        public void RemoveDoorFromBadge(int badgeID, string removeDoor)
         {
-            _badgesDictionary.Remove(badgeID, List<string>, door);
+            _badgesDictionary[badgeID].Remove(removeDoor);
         }
-        public void RemoveDoorFromID(int badgeID, door)
-        {
-            _badgesDictionary.Remove(badgeID, List<string>);
-        }
-
-        //the key for the dictionary will be the BadgeID
-
-        // The value for the dictionary will be the list of door names
-
-
     }
 }

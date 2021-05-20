@@ -7,7 +7,6 @@ namespace Challenge3_BadgesTest
     public class BadgesPocoTests
     {
 
-        public Queue<Claim> _claimList = new Queue<Claim>();
         [TestMethod]
         public void TestMethod1()
         {
