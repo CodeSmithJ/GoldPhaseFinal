@@ -57,7 +57,7 @@ namespace Challenge3_BadgesConsole
                 Console.Clear();
             }
         }
-        public void AddNewBadge()
+        private void AddNewBadge()
         {
             Console.Clear();
             Console.WriteLine("What is the number on the badge?");
@@ -103,7 +103,7 @@ namespace Challenge3_BadgesConsole
                 Console.Write($"{accessDoor} \n");
             }
         }
-        public void UpdateBadge()
+        private void UpdateBadge()
         {
             Console.WriteLine("What is the badge number to update?");
             string accessNum = Console.ReadLine();
@@ -121,7 +121,6 @@ namespace Challenge3_BadgesConsole
                         _badgesRepository.RemoveDoorFromBadge(Convert.ToInt32(accessNum), doorRemoved);
                         DoorAccess(Convert.ToInt32(accessNum));
                         Console.WriteLine("Door removed.");
-                        Console.WriteLine($"");
                         Console.ReadLine();
                         Console.Clear();
                         break;
@@ -132,6 +131,7 @@ namespace Challenge3_BadgesConsole
                         string doorAdded = Console.ReadLine();
                         _badgesRepository.AddNewDoorToBadge(Convert.ToInt32(accessNum), doorAdded);
                         DoorAccess(Convert.ToInt32(accessNum));
+                        Console.WriteLine("Door added");
                         Console.ReadLine();
                         Console.Clear();
                         break;
@@ -143,7 +143,7 @@ namespace Challenge3_BadgesConsole
                     }
             }
         }
-        public void ViewAllBadges()
+        private void ViewAllBadges()
         {
             Dictionary<int, List<string>> _badgeDictionary = _badgesRepository.ViewAllBadges();
             foreach (KeyValuePair<int, List<string>> badges in _badgeDictionary)
@@ -157,7 +157,7 @@ namespace Challenge3_BadgesConsole
             }
             Console.ReadLine();
         }
-        public void SaveBadges()
+        private void SaveBadges()
         {
             _badgesRepository.AddNewBadge(12345, new List<string> { "A7" });
             _badgesRepository.AddNewBadge(22345, new List<string> { "A1", "A4", "B1", "B2" });

@@ -8,7 +8,7 @@ namespace Challenge2_ClaimsRepository
 {
     public class ClaimRepository
     {
-        public Queue<Claim> _claimList = new Queue<Claim>();
+        private Queue<Claim> _claimList = new Queue<Claim>();
         public Queue<Claim> DisplayAllClaimList()
         {
             return _claimList;

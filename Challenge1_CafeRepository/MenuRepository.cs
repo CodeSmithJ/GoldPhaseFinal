@@ -8,17 +8,15 @@ namespace Challenge1_CafeRepository
 {
     public class MenuRepository
     {
-        public List<MenuItem> _menuItem = new List<MenuItem>();
+        private List<MenuItem> _menuItem = new List<MenuItem>();
         public List<MenuItem> AllItems()
         {
             return _menuItem;
         }
-
         public void AddToOrder(MenuItem newItem)
         {
             _menuItem.Add(newItem);
         }
-
         public MenuItem GetOrderByCombo(int combo)
         {
             foreach (MenuItem meal in _menuItem)
@@ -30,7 +28,6 @@ namespace Challenge1_CafeRepository
             }
             return null;
         }
-
         public bool RemoveItem(int itemToRemove)
         {
             MenuItem mealToRemove = GetOrderByCombo(itemToRemove);

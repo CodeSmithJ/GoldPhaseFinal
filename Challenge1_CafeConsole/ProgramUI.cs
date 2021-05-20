@@ -92,7 +92,6 @@ namespace Challenge1_CafeConsole
             }
             Console.WriteLine();
         }
-
         private void DeleteMenuItem()
         {
             Console.Clear();

@@ -19,6 +19,7 @@ namespace Challenge3_BadgesTest
             _badgesRepository.AddNewBadge(12347, new List<string> { "A7" });
             _badgesRepository.AddNewBadge(12347, new List<string> { "A8" });
         }
+
         [TestMethod]
         public void AddBadges_ShouldReturnTrue()
         {
@@ -34,16 +35,19 @@ namespace Challenge3_BadgesTest
                 Console.WriteLine("false");
             }
         }
+
         [TestMethod]
         public void BadgeByBadgeID_ShouldBeEqual()
         {
-        //    Badges badges = _badgesRepository.BadgeByBadgeID(accessNum);
+            _badgesRepository = new BadgesRepository();
         }
+
         [TestMethod]
         public void RemoveBadges_ShouldBeFalse()
         {
         //    _badgesRepository.RemoveDoorFromBadge(Convert.ToInt32(accessNum), doorRemoved);
         }
+
         [TestMethod]
         public void ViewAllBadges_ShouldViewBadges()
         {

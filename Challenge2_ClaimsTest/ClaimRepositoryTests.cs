@@ -29,6 +29,7 @@ namespace Challenge2_ClaimsTest
             Claim actual = _claimRepo.PeekClaim();
             Assert.AreEqual(expected, actual);
         }
+
         [TestMethod]
         public void DisplayAllClaims_AllClaims()
         {
@@ -55,6 +56,5 @@ namespace Challenge2_ClaimsTest
             Claim checkClaim = _claimRepo.PeekClaim();
             Assert.AreEqual(newClaim.ClaimID, checkClaim.ClaimID);
         }
-
     }
 }
