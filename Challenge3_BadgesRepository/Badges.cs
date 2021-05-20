@@ -9,11 +9,11 @@ namespace Challenge3_BadgesRepository
     public class Badges
     {
         public int BadgeID { get; set; }
-        public string Doors { get; set; }
+        public List<string> Doors { get; set; }
         public string Name { get; set; }
 
         public Badges() { }
-        public Badges(int badgeID, string doors, string name)
+        public Badges(int badgeID, List<string> doors, string name)
         {
             BadgeID = badgeID;
             Doors = doors;

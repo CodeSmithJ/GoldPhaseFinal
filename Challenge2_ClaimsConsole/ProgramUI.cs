@@ -63,11 +63,10 @@ namespace Challenge2_ClaimsConsole
             {
                 Console.Clear();
                 Queue<Claim> claimList = _claimRepository.DisplayAllClaimList();
-
                 Console.WriteLine("ClaimID     Type        Description       Amount    DateOfAccident    DateOfClaim    IsValid\n");
-                foreach (Claim list in claimList)
+                foreach (Claim claim in claimList)
                 {
-                    Console.WriteLine($"#   {list.ClaimID}        {list.TypeOfClaim}        {list.Description}  ${list.ClaimAmount}    {list.DateOfIncident.ToShortDateString()}         {list.DateOfClaim.ToShortDateString()}        {list.IsValid}");
+                    Console.WriteLine($"#   {claim.ClaimID}        {claim.TypeOfClaim}        {claim.Description}  ${claim.ClaimAmount}    {claim.DateOfIncident.ToShortDateString()}         {claim.DateOfClaim.ToShortDateString()}        {claim.IsValid}");
                 }
                 Console.ReadLine();
             }
