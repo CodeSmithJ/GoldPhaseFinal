@@ -15,10 +15,14 @@ namespace Challenge3_BadgesTest
         {
             _badgesRepository = new BadgesRepository();
             _badgesRepository.AddNewBadge(12345, new List<string> { "A5" });
+            _badgesRepository.AddNewBadge(12346, new List<string> { "A6" });
+            _badgesRepository.AddNewBadge(12347, new List<string> { "A7" });
+            _badgesRepository.AddNewBadge(12347, new List<string> { "A8" });
         }
         [TestMethod]
-        public void ViewBadgesAddBadgesTested_ShouldReturnTrue()
+        public void AddBadges_ShouldReturnTrue()
         {
+            _badgesRepository.AddNewBadge(12345, new List<string> { "A5" });
             BadgesRepository viewRepository = new BadgesRepository();
             Dictionary<int, List<string>> checkDictonary = viewRepository.ViewAllBadges();
             if (checkDictonary.ContainsKey(12345))
@@ -29,6 +33,21 @@ namespace Challenge3_BadgesTest
             {
                 Console.WriteLine("false");
             }
+        }
+        [TestMethod]
+        public void BadgeByBadgeID_ShouldBeEqual()
+        {
+        //    Badges badges = _badgesRepository.BadgeByBadgeID(accessNum);
+        }
+        [TestMethod]
+        public void RemoveBadges_ShouldBeFalse()
+        {
+        //    _badgesRepository.RemoveDoorFromBadge(Convert.ToInt32(accessNum), doorRemoved);
+        }
+        [TestMethod]
+        public void ViewAllBadges_ShouldViewBadges()
+        {
+        //    Dictionary<int, List<string>> doorDictionary = _badgesRepository.ViewAllBadges();
         }
     }
 }

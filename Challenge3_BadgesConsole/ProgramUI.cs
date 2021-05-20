@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Challenge3_BadgesConsole
 {
-    class ProgramUI
+    public class ProgramUI
     {
-        private BadgesRepository _badgesRepo = new BadgesRepository();
+        private BadgesRepository _badgesRepository = new BadgesRepository();
         public void Run()
         {
             SaveBadges();
@@ -59,19 +59,109 @@ namespace Challenge3_BadgesConsole
         }
         public void AddNewBadge()
         {
-
+            Console.Clear();
+            Console.WriteLine("What is the number on the badge?");
+            string accessNum = Console.ReadLine();
+            DoorAccess(Convert.ToInt32(accessNum));
+            Console.WriteLine("List a door that it needs access to: ");
+            List<string> accessDoor = new List<string> { Console.ReadLine() };
+            bool addDoor = true;
+            while (addDoor)
+            {
+                Console.WriteLine("Any other doors (y/n) ?");
+                string nextDoor = Console.ReadLine().ToLower();
+                switch (nextDoor)
+                {
+                    case "y":
+                        {
+                            Console.WriteLine("List a door that it needs access to: ");
+                            accessDoor.Add(Console.ReadLine());
+                            break;
+                        }
+                    case "n":
+                        {
+                            addDoor = false;
+                            Console.Clear();
+                            Menu();
+                            break;
+                        }
+                    default:
+                        {
+                            break;
+                        }
+                }
+                _badgesRepository.AddNewBadge(Convert.ToInt32(accessNum), accessDoor);
+            }
+        }
+        private void DoorAccess(int accessNum)
+        {
+            Dictionary<int, List<string>> doorDictionary = _badgesRepository.ViewAllBadges();
+            Console.WriteLine($"{accessNum} has access to: ");
+            Badges badges = _badgesRepository.BadgeByBadgeID(accessNum);
+            foreach (string accessDoor in badges.List)
+            {
+                Console.Write($"{accessDoor} \n");
+            }
         }
         public void UpdateBadge()
         {
-
+            Console.WriteLine("What is the badge number to update?");
+            string accessNum = Console.ReadLine();
+            DoorAccess(Convert.ToInt32(accessNum));
+            Console.WriteLine("What would you like to do? \n" +
+                "1. Remove a Door \n" +
+                "2. Add a Door \n");
+            string addRemoveDoor = Console.ReadLine();
+            switch (addRemoveDoor)
+            {
+                case "1":
+                    {
+                        Console.WriteLine("Which door would you like to remove?");
+                        string doorRemoved = Console.ReadLine();
+                        _badgesRepository.RemoveDoorFromBadge(Convert.ToInt32(accessNum), doorRemoved);
+                        DoorAccess(Convert.ToInt32(accessNum));
+                        Console.WriteLine("Door removed.");
+                        Console.WriteLine($"");
+                        Console.ReadLine();
+                        Console.Clear();
+                        break;
+                    }
+                case "2":
+                    {
+                        Console.WriteLine("Which door would you like to add?");
+                        string doorAdded = Console.ReadLine();
+                        _badgesRepository.AddNewDoorToBadge(Convert.ToInt32(accessNum), doorAdded);
+                        DoorAccess(Convert.ToInt32(accessNum));
+                        Console.ReadLine();
+                        Console.Clear();
+                        break;
+                    }
+                default:
+                    {
+                        Console.ReadLine();
+                        break;
+                    }
+            }
         }
         public void ViewAllBadges()
         {
-
+            Dictionary<int, List<string>> _badgeDictionary = _badgesRepository.ViewAllBadges();
+            foreach (KeyValuePair<int, List<string>> badges in _badgeDictionary)
+            {
+                Console.WriteLine($"Badge#: {badges.Key} \n" + "Door Access:");
+                foreach (string doors in badges.Value)
+                {
+                    Console.Write($" {doors} ");
+                }
+                Console.WriteLine("\n========================");
+            }
+            Console.ReadLine();
         }
         public void SaveBadges()
         {
-
+            _badgesRepository.AddNewBadge(12345, new List<string> { "A7" });
+            _badgesRepository.AddNewBadge(22345, new List<string> { "A1", "A4", "B1", "B2" });
+            _badgesRepository.AddNewBadge(32345, new List<string> { "A4", "A5" });
         }
     }
 }
