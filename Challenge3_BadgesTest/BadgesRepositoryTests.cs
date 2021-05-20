@@ -6,10 +6,16 @@ namespace Challenge3_BadgesTest
     [TestClass]
     public class BadgesRepositoryTests
     {
+        private Badges _badge1;
+        private Badges _badge2;
+        private BadgesRepository _badgesRepo;
+
+        [TestInitialize]
         public void Arrange()
         {
-            _repo = new MenuRepository();
-            _item = new MenuItem(ComboMeal.ChickenNuggets, "Chicken Nuggets", "8 Piece Nugget Meal", 5.99);
+             private Badges _badge1;
+             private Badges _badge2;
+             private BadgesRepository _badgesRepo;
         }
 
         [TestMethod]

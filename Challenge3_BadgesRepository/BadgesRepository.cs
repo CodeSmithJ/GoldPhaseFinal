@@ -8,25 +8,34 @@ namespace Challenge3_BadgesRepository
 {
     public class BadgesRepository
     {
-        public Dictionary<int, List<<string>> _badgesDictoinary = new Dictionary<int, List<string>>();
-        //Create a Dictionary of badges
-        public void AddNewBadge()
+        public Dictionary<int, List<string>> _badgesDictionary = new Dictionary<int, List<string>>();
+        public Dictionary<int,List<string>> ListAllBadges()
         {
-            BadgeList.Add("Mahesh Chand", 35);    
-            AuthorList.Add("Mike Gold", 25);    
-            AuthorList.Add("Praveen Kumar", 29);    
-            AuthorList.Add("Raj Beniwal", 21);    
-            AuthorList.Add("Dinesh Beniwal", 84); 
+            return _badgesDictionary;
+        }
+        public void AddNewBadge(int badgeID, List<string> doorNames)
+        {
+            _badgesDictionary.Add(badgeID, doorNames);
+        }
+        public void EditBadgeByBadgeID(int badgeID)
+        {
+
         }
 
-        public void UpdateDoors()
+        public void AddNewDoorToID(int badgeID, List<string> doorNames)
         {
-
+            _badgesDictionary.Remove(badgeID, List<string> doorNames)
+        }
+        public void RemoveDoorFromID(int badgeID, doorNames)
+        {
+            _badgesDictionary.Remove(badgeID, List<string> doorNames)
         }
 
         //the key for the dictionary will be the BadgeID
-        Dictionary<string, float> PriceList = new Dictionary<string, float>(3);
+        Dictionary<Key[badgeID], Value(doorID)>
 
         // The value for the dictionary will be the list of door names
+
+
     }
 }
