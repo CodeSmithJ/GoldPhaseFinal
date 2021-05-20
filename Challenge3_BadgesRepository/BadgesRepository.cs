@@ -19,20 +19,19 @@ namespace Challenge3_BadgesRepository
         }
         public void EditBadgeByBadgeID(int badgeID)
         {
-
+            Badges badges = new Badges(badgeID, List<string>);
         }
 
-        public void AddNewDoorToID(int badgeID, List<string> doorNames)
+        public void AddNewDoorToID(int badgeID, List<string> door)
         {
-            _badgesDictionary.Remove(badgeID, List<string> doorNames)
+            _badgesDictionary.Remove(badgeID, List<string>, door);
         }
-        public void RemoveDoorFromID(int badgeID, doorNames)
+        public void RemoveDoorFromID(int badgeID, door)
         {
-            _badgesDictionary.Remove(badgeID, List<string> doorNames)
+            _badgesDictionary.Remove(badgeID, List<string>);
         }
 
         //the key for the dictionary will be the BadgeID
-        Dictionary<Key[badgeID], Value(doorID)>
 
         // The value for the dictionary will be the list of door names
 
